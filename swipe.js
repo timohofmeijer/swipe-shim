@@ -1,5 +1,5 @@
 /*
- * Swipe 2.0
+ * Swipe 2.0 (2.0.2 shim/fork)
  *
  * Brad Birdsall
  * Copyright 2013, MIT License
@@ -494,6 +494,31 @@ function Swipe(container, options) {
       stop();
 
       next();
+
+    },
+    pause: function() {
+
+      // cancel slideshow
+      stop();
+
+    },
+    resume: function(ms){
+
+      // instantaneously
+      begin();
+
+      if(typeof ms !== 'undefined') {
+
+        // cancel slideshow
+        stop();
+
+        // update delay
+        delay = ms;
+      }
+      else {
+        // reset delay
+        delay = options.auto || 0;
+      }
 
     },
     stop: function() {
